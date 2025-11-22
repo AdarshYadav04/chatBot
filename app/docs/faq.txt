@@ -1,0 +1,49 @@
+Q1: How do I shorten a URL?
+
+A: Sign in → open Dashboard → click "Create Short URL" → enter the original URL → optionally add a custom alias → click Save.
+Your short link will look like:
+https://sho.rt/abc123
+
+Q2: How can I view clicks or analytics for my short links?
+
+A: Go to your Dashboard and click "View Stats" next to the link. You will see:
+
+total clicks
+
+country-wise clicks
+
+device types
+
+referrer websites
+Location is inferred from IP and may not be fully accurate.
+
+Q3: Can I create a custom alias?
+
+A: Yes. Aliases must be unique and can contain:
+A–Z, a–z, 0–9, hyphen (-), underscore (_)
+If an alias is already taken, choose a different one.
+
+Q4: Can I set an expiration date for my short URL?
+
+A: Yes. During creation, you can choose an expiry date.
+After expiration, the link will return 404 Not Found.
+
+Q5: How does the service handle privacy and GDPR?
+
+A: We store:
+
+click timestamps
+
+IP-derived geolocation (country/city)
+We do not store full IP addresses beyond 30 days.
+For deletion requests, contact: support@example.com
+
+Q6: Why am I getting a 404 after creating a short URL?
+
+A: Check the following:
+
+Your domain is correct
+
+DNS is properly set up
+
+If using a custom domain, ensure you configured a CNAME record pointing to our service.

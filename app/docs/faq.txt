@@ -1,6 +1,6 @@
 Q1: How do I shorten a URL?
 
-A: Sign in → open Dashboard → click "Create Short URL" → enter the original URL → optionally add a custom alias → click Save.
+Ans: Sign in → open Dashboard → click "Create Short URL" → enter the original URL → optionally add a custom alias → click Save.
 Your short link will look like:
 https://sho.rt/abc123
 

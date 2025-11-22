@@ -46,7 +46,7 @@ llm = ChatGoogleGenerativeAI(
 
 prompt = ChatPromptTemplate.from_template("""
 Answer the following question based only on the provided context.
-If the answer is not in the context, say you don't know.
+If the answer is not in the context, give some related small ans .
 
 <context>
 {context}

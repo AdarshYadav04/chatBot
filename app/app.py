@@ -45,15 +45,23 @@ llm = ChatGoogleGenerativeAI(
 )
 
 prompt = ChatPromptTemplate.from_template("""
-Answer the following question based only on the provided context.
-If the answer is not in the context, give some related small ans .
+You are an expert assistant. Answer the user's question **strictly using the information provided in the context**.
+
+Rules:
+1. If the context contains the answer, give a **clear, concise, and accurate answer**.
+2. If the answer is **not fully present** in the context:
+   - Provide a **short helpful response** based only on general knowledge.
+   - Do NOT hallucinate any facts that are not supported by the context.
+3. Always mention in one sentence if the information was missing or incomplete.
 
 <context>
 {context}
 </context>
 
 Question: {input}
+
 """)
+
 
 document_chain = create_stuff_documents_chain(llm, prompt)
 retrieval_chain = create_retrieval_chain(retriever, document_chain)

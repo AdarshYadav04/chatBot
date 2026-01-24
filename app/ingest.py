@@ -23,7 +23,18 @@ logger = logging.getLogger(__name__)
 # Configuration
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 VECTORDB_PATH = os.getenv("VECTORDB_PATH", "./vectordb")
-DOCS_PATH = os.getenv("DOCS_PATH", "app/docs/faq.txt")
+
+# Get the project root directory (parent of app directory)
+PROJECT_ROOT = Path(__file__).parent.parent
+DEFAULT_DOCS_PATH = PROJECT_ROOT / "app" / "docs" / "faq.txt"
+
+# Allow DOCS_PATH to be relative to project root or absolute
+DOCS_PATH_ENV = os.getenv("DOCS_PATH", None)
+if DOCS_PATH_ENV:
+    DOCS_PATH = Path(DOCS_PATH_ENV) if Path(DOCS_PATH_ENV).is_absolute() else PROJECT_ROOT / DOCS_PATH_ENV
+else:
+    DOCS_PATH = DEFAULT_DOCS_PATH
+
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "250"))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "10"))
 
@@ -35,9 +46,16 @@ def validate_inputs() -> None:
     if not GEMINI_API_KEY:
         errors.append("GEMINI_API_KEY environment variable is required")
     
-    docs_file = Path(DOCS_PATH)
+    # Convert to Path object if it's a string
+    docs_file = DOCS_PATH if isinstance(DOCS_PATH, Path) else Path(DOCS_PATH)
+    
     if not docs_file.exists():
-        errors.append(f"Document file not found: {DOCS_PATH}")
+        errors.append(f"Document file not found: {docs_file}")
+        logger.error(f"Looking for file at: {docs_file.absolute()}")
+        # Suggest alternative paths
+        alt_path = PROJECT_ROOT / "app" / "docs" / "faq.txt"
+        if alt_path.exists():
+            logger.info(f"Found file at alternative location: {alt_path.absolute()}")
     
     if CHUNK_SIZE < 1:
         errors.append("CHUNK_SIZE must be greater than 0")
@@ -53,16 +71,32 @@ def validate_inputs() -> None:
         for error in errors:
             logger.error(f"  - {error}")
         sys.exit(1)
+    
+    # Log the resolved path
+    logger.info(f"Using document file: {docs_file.absolute()}")
 
 
 def load_documents() -> list:
     """Load documents from the specified path."""
     try:
-        logger.info(f"Loading documents from: {DOCS_PATH}")
-        loader = TextLoader(DOCS_PATH, encoding="utf-8")
+        # Ensure we have a Path object
+        docs_file = DOCS_PATH if isinstance(DOCS_PATH, Path) else Path(DOCS_PATH)
+        docs_file_str = str(docs_file)
+        
+        logger.info(f"Loading documents from: {docs_file.absolute()}")
+        loader = TextLoader(docs_file_str, encoding="utf-8")
         documents = loader.load()
+        
+        # Log document info
+        total_chars = sum(len(doc.page_content) for doc in documents)
         logger.info(f"Loaded {len(documents)} document(s)")
+        logger.info(f"Total characters: {total_chars:,}")
+        
         return documents
+    except FileNotFoundError as e:
+        logger.error(f"File not found: {e}")
+        logger.error(f"Please ensure faq.txt exists at: {DOCS_PATH}")
+        sys.exit(1)
     except Exception as e:
         logger.error(f"Failed to load documents: {e}", exc_info=True)
         sys.exit(1)

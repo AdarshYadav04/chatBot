@@ -1,49 +1,197 @@
 Q1: How do I shorten a URL?
 
-Ans: Sign in → open Dashboard → click "Create Short URL" → enter the original URL → optionally add a custom alias → click Save.
-Your short link will look like:
-https://sho.rt/abc123
+Answer: To shorten a URL, follow these steps:
+1. Sign in to your account
+2. Open your Dashboard
+3. Click the "Create Short URL" button
+4. Enter the original long URL in the provided field
+5. Optionally add a custom alias if you want a specific short link name
+6. Click the "Save" button to create your short URL
+
+Your short link will be generated and will look like: https://sho.rt/abc123
+You can copy this link and share it anywhere you need.
 
 Q2: How can I view clicks or analytics for my short links?
 
-A: Go to your Dashboard and click "View Stats" next to the link. You will see:
+Answer: To view analytics for your short links:
+1. Go to your Dashboard
+2. Find the short link you want to analyze
+3. Click "View Stats" or "Analytics" next to the link
 
-total clicks
+The analytics dashboard will show you:
+- Total number of clicks
+- Click trends over time (daily, weekly, monthly)
+- Country-wise click distribution
+- Device types (desktop, mobile, tablet)
+- Referrer websites (where the clicks came from)
+- Browser information
+- Click timestamps
 
-country-wise clicks
+Note: Location data is inferred from IP addresses and may not be 100% accurate. The analytics are updated in real-time.
 
-device types
+Q3: Can I create a custom alias for my short URL?
 
-referrer websites
-Location is inferred from IP and may not be fully accurate.
+Answer: Yes, you can create a custom alias for your short URL. When creating a new short link, you have the option to specify a custom alias instead of using the auto-generated one.
 
-Q3: Can I create a custom alias?
+Custom alias rules:
+- Must be unique (not already taken by another user)
+- Can contain: uppercase letters (A-Z), lowercase letters (a-z), numbers (0-9), hyphens (-), and underscores (_)
+- Cannot contain spaces or special characters
+- Minimum length: 3 characters
+- Maximum length: 30 characters
 
-A: Yes. Aliases must be unique and can contain:
-A–Z, a–z, 0–9, hyphen (-), underscore (_)
-If an alias is already taken, choose a different one.
+If your desired alias is already taken, you'll need to choose a different one. The system will notify you if an alias is unavailable.
 
 Q4: Can I set an expiration date for my short URL?
 
-A: Yes. During creation, you can choose an expiry date.
-After expiration, the link will return 404 Not Found.
+Answer: Yes, you can set an expiration date for your short URL. This feature allows you to automatically disable links after a specific date.
 
-Q5: How does the service handle privacy and GDPR?
+To set an expiration date:
+1. When creating or editing a short URL, look for the "Expiration Date" option
+2. Select your desired expiration date and time
+3. Save your changes
 
-A: We store:
+After the expiration date passes, the short URL will return a 404 Not Found error when accessed. This is useful for time-sensitive promotions, temporary links, or content that should only be accessible for a limited period.
 
-click timestamps
+You can also remove the expiration date later if you want the link to remain active indefinitely.
 
-IP-derived geolocation (country/city)
-We do not store full IP addresses beyond 30 days.
-For deletion requests, contact: support@example.com
+Q5: How does the service handle privacy and GDPR compliance?
 
-Q6: Why am I getting a 404 after creating a short URL?
+Answer: We take privacy and GDPR compliance seriously. Here's how we handle your data:
 
-A: Check the following:
+Data We Collect:
+- Click timestamps (when links are accessed)
+- IP-derived geolocation data (country and city level, not exact addresses)
+- Device and browser information
+- Referrer information (which website directed users to the link)
 
-Your domain is correct
+Data Retention:
+- Full IP addresses are stored for a maximum of 30 days for security and analytics purposes
+- After 30 days, only anonymized location data (country/city) is retained
+- You can request deletion of your data at any time
 
-DNS is properly set up
+Your Rights:
+- Right to access your data
+- Right to delete your data
+- Right to export your data
+- Right to opt-out of data collection (where applicable)
 
-If using a custom domain, ensure you configured a CNAME record pointing to our service.
+For data deletion requests, privacy inquiries, or GDPR-related questions, please contact our support team at: support@example.com
+
+We comply with GDPR, CCPA, and other major privacy regulations.
+
+Q6: Why am I getting a 404 error after creating a short URL?
+
+Answer: If you're getting a 404 Not Found error after creating a short URL, check the following:
+
+1. Verify the domain is correct: Make sure you're using the correct short domain (e.g., https://sho.rt/yourlink)
+
+2. Check if the link has expired: If you set an expiration date, the link may have passed its expiration date. Check your dashboard to verify the link status.
+
+3. DNS configuration: If you're using a custom domain, ensure your DNS is properly configured:
+   - Create a CNAME record pointing to our service
+   - Wait for DNS propagation (can take up to 48 hours)
+   - Verify the CNAME record is correctly set up
+
+4. Link status: Check your dashboard to ensure the link is active and not disabled
+
+5. Typo in the link: Double-check that you're using the exact short URL without any typos
+
+If the issue persists, contact support@example.com with your short URL and we'll help troubleshoot the problem.
+
+Q7: Can I edit or delete my short URLs?
+
+Answer: Yes, you can edit and delete your short URLs from your Dashboard.
+
+To edit a short URL:
+1. Go to your Dashboard
+2. Find the short URL you want to edit
+3. Click the "Edit" button
+4. Modify the destination URL, custom alias, or expiration date
+5. Click "Save" to apply changes
+
+To delete a short URL:
+1. Go to your Dashboard
+2. Find the short URL you want to delete
+3. Click the "Delete" button
+4. Confirm the deletion
+
+Note: Once deleted, the short URL will no longer work and all associated analytics data will be permanently removed. This action cannot be undone.
+
+Q8: Is there a limit on how many short URLs I can create?
+
+Answer: The number of short URLs you can create depends on your account type:
+
+Free Account:
+- Up to 100 short URLs
+- Basic analytics
+- Standard support
+
+Premium Account:
+- Unlimited short URLs
+- Advanced analytics with detailed reports
+- Custom domain support
+- Priority support
+- API access
+
+If you reach your limit on a free account, you can either:
+- Delete unused short URLs to free up space
+- Upgrade to a Premium account for unlimited links
+
+Q9: How do I use a custom domain for my short URLs?
+
+Answer: To use a custom domain for your short URLs:
+
+1. Purchase or use an existing domain
+2. Go to your Dashboard settings
+3. Navigate to "Custom Domains" section
+4. Click "Add Custom Domain"
+5. Enter your domain name
+6. Configure DNS settings:
+   - Create a CNAME record
+   - Point it to: shortener.example.com (or the provided target)
+   - Wait for DNS propagation (24-48 hours)
+7. Verify the domain in your dashboard
+8. Set it as your default domain or use it for specific links
+
+Once configured, you can create short URLs using your custom domain instead of the default one. Custom domains are available for Premium account holders.
+
+Q10: What happens if my original URL changes or is deleted?
+
+Answer: If the original (destination) URL changes or is deleted:
+
+- The short URL will continue to work, but clicking it will redirect to the new location (if the URL was changed) or show an error (if the URL was deleted)
+- We do not automatically update short URLs when destination URLs change
+- You should update the destination URL in your Dashboard if the original link changes
+- If a destination URL returns a 404 or error, we recommend updating or deleting the short URL to avoid broken links
+
+Best practice: Regularly check your short URLs to ensure they're pointing to valid destinations.
+
+Q11: Can I track QR codes for my short URLs?
+
+Answer: Yes, you can generate QR codes for your short URLs:
+
+1. Go to your Dashboard
+2. Select the short URL you want to create a QR code for
+3. Click "Generate QR Code"
+4. Download the QR code image
+5. Use it in print materials, websites, or anywhere you need
+
+The QR code will track clicks just like regular link clicks, and all analytics will be available in your dashboard. QR code scans will appear in your analytics with device and location information.
+
+Q12: How secure are short URLs? Can someone guess my links?
+
+Answer: Short URLs are designed with security in mind:
+
+- Auto-generated links use random, unpredictable character combinations (e.g., abc123xyz789)
+- The probability of guessing a valid short URL is extremely low
+- Custom aliases are only as secure as you make them - avoid using easily guessable words
+- We monitor for suspicious activity and can disable links if needed
+
+Security best practices:
+- Use random custom aliases rather than predictable ones
+- Set expiration dates for sensitive links
+- Monitor your analytics for unexpected traffic
+- Don't share sensitive information through short URLs
+
+For highly sensitive content, we recommend using additional security measures beyond URL shortening.

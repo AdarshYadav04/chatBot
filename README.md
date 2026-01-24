@@ -72,6 +72,28 @@ This will:
 - Generate embeddings
 - Save the vector store to `./vectordb`
 
+**Note:** The ingestion script automatically finds `app/docs/faq.txt`. You can also specify a custom path using the `DOCS_PATH` environment variable.
+
+### Updating the FAQ
+
+After editing `app/docs/faq.txt`, rebuild the vector database:
+
+**Windows:**
+```bash
+update_faq.bat
+```
+
+**Linux/Mac:**
+```bash
+chmod +x update_faq.sh
+./update_faq.sh
+```
+
+**Or manually:**
+```bash
+uv run python app/ingest.py
+```
+
 ## Running the Application
 
 ### Start the FastAPI Server

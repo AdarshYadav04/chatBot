@@ -16,4 +16,5 @@ dependencies = [
     "langchain-text-splitters>=1.0.0",
     "python-dotenv>=1.2.1",
     "uvicorn>=0.38.0",
+    "gunicorn>=21.2.0",
 ]

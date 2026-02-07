@@ -284,6 +284,16 @@ If port 8000 is already in use:
 uvicorn app.app:app --port 8001
 ```
 
+### CORS / "Access-Control-Allow-Origin must not be the wildcard '*'"
+
+If your frontend uses `credentials: 'include'` (cookies) and you see a CORS error about the wildcard `*`:
+
+- The chat API is configured to allow **https://shortly-z5i6.onrender.com** by default.
+- For other frontends, set the backend env var:  
+  `CORS_ORIGINS=https://your-frontend-domain.com`  
+  (comma-separated for multiple: `https://a.com,https://b.com`).
+- Redeploy the chat service after changing `CORS_ORIGINS`.
+
 ## Production Deployment
 
 For production deployment, see [PRODUCTION.md](PRODUCTION.md) for detailed instructions.

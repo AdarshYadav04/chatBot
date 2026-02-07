@@ -38,7 +38,9 @@ class Settings:
     RATE_LIMIT_PER_MINUTE: int = int(os.getenv("RATE_LIMIT_PER_MINUTE", "60"))
     
     # CORS Configuration
-    CORS_ORIGINS: str = os.getenv("CORS_ORIGINS", "*")
+    # When using credentials (cookies/auth), browser requires a specific origin, not "*".
+    
+    CORS_ORIGINS: str = os.getenv("CORS_ORIGINS")
     
     # LLM Configuration
     LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.1"))
@@ -47,8 +49,13 @@ class Settings:
     
     @classmethod
     def get_cors_origins(cls) -> list:
-        """Parse CORS origins from environment variable."""
-        if cls.CORS_ORIGINS == "*":
+        """
+        Parse CORS origins from environment variable.
+        When allow_credentials=True, browser forbids '*'; use explicit origin(s).
+        """
+        if not cls.CORS_ORIGINS or cls.CORS_ORIGINS.strip() == "":
+            return ["*"]
+        if cls.CORS_ORIGINS.strip() == "*":
             return ["*"]
         return [origin.strip() for origin in cls.CORS_ORIGINS.split(",") if origin.strip()]
     

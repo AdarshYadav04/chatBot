@@ -86,7 +86,7 @@ def initialize_rag_chain() -> None:
             2. If the answer is **not fully present** in the context:
             - Provide a **short helpful response** based only on general knowledge.
             - Do NOT hallucinate any facts that are not supported by the context.
-            3. Always mention in one sentence if the information was missing or incomplete.
+            3. If the context is empty or irrelevant, respond with a polite message indicating that you don't have enough information to answer.
 
             <context>
             {context}
